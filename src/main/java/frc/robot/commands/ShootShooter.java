@@ -60,7 +60,7 @@ public class ShootShooter extends CommandBase {
     } else if (manipulatorController.getRightBumper()) {
       shooterSubsystem.steadyShoot(0.8);
     } else if (manipulatorController.getLeftBumper()) {
-      shooterSubsystem.setSpeed(0.6);
+      shooterSubsystem.setSpeed(0.65);
     } else {
       shooterSubsystem.stopShooter();
       shooterSubsystem.lastShootVelocity = 0;
