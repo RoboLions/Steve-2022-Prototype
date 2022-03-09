@@ -32,12 +32,12 @@ public class AutoPath1 extends SequentialCommandGroup {
       new StopNWait(driveSubsystem, 0.5),
 
       // Target hub
-      new AlignShooter(limelightSubsystem, driveSubsystem),
+      new AlignShooter(limelightSubsystem, driveSubsystem).withTimeout(3.5),
 
       new StopNWait(driveSubsystem, 0.5),
 
       // Shoot balls
-      new AutoShoot(shooterSubsystem).withTimeout(6)
+      new AutoShoot(shooterSubsystem).withTimeout(5)
     );
   }
 }

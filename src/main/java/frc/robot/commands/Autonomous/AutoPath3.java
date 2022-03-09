@@ -40,7 +40,7 @@ public class AutoPath3 extends SequentialCommandGroup {
       new AlignShooter(limelightSubsystem, driveSubsystem),
 
       // Shoot balls 
-      new AutoShoot(shootSubsystem).withTimeout(6),
+      new AutoShoot(shootSubsystem).withTimeout(5),
       new StopNWait(driveSubsystem, 0.5),
 
       // Move forward
@@ -55,7 +55,7 @@ public class AutoPath3 extends SequentialCommandGroup {
       new AlignShooter(limelightSubsystem, driveSubsystem),
 
       // Shoot
-      new AutoShoot(shootSubsystem).withTimeout(6),
+      new AutoShoot(shootSubsystem).withTimeout(5),
       new StopNWait(driveSubsystem, 0.5)
     );
   }
