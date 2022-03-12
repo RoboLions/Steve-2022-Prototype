@@ -29,7 +29,8 @@ public class RobotMap {
 
     public static final int RIGHT_CLIMB_PORT = 8; 
     public static final int LEFT_CLIMB_PORT = 9; 
-    public static final int HIGH_CLIMB_PORT = 13;
+    public static final int HIGH_LEFT_CLIMB_PORT = 13;
+    public static final int HIGH_RIGHT_CLIMB_PORT = 14;
 
     //public static final int LASER_PORT = 16;
 
@@ -51,7 +52,8 @@ public class RobotMap {
 
     public static WPI_TalonFX rightClimbMotor = new WPI_TalonFX(RIGHT_CLIMB_PORT);
     public static WPI_TalonFX leftClimbMotor = new WPI_TalonFX(LEFT_CLIMB_PORT);
-    public static WPI_TalonFX highClimbMotor = new WPI_TalonFX(HIGH_CLIMB_PORT);
+    public static WPI_TalonFX highRightClimbMotor = new WPI_TalonFX(HIGH_RIGHT_CLIMB_PORT);
+    public static WPI_TalonFX highLeftClimbMotor = new WPI_TalonFX(HIGH_LEFT_CLIMB_PORT);
 
     // public static AnalogInput laserVision = new AnalogInput(LASER_PORT);
 
