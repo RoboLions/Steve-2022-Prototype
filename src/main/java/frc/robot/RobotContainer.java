@@ -11,6 +11,7 @@ import frc.robot.commands.AlignShooter;
 import frc.robot.commands.AutoMove;
 import frc.robot.commands.JoystickDrive;
 import frc.robot.commands.MoveClimb;
+import frc.robot.commands.MoveServo;
 import frc.robot.commands.ShootShooter;
 import frc.robot.commands.Autonomous.DefaultAutoPath;
 import frc.robot.Constants.OIConstants;
@@ -27,6 +28,7 @@ import frc.robot.subsystems.IntakeSubsystem;
 //import frc.robot.subsystems.LIDARLiteSubsystem;
 // import frc.robot.subsystems.LaserSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
+import frc.robot.subsystems.ServoSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SimpleShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -45,6 +47,7 @@ public class RobotContainer {
   public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public final static DriveSubsystem driveSubsystem = new DriveSubsystem();
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+  public final static ServoSubsystem servoSubsystem = new ServoSubsystem();
   // public final static LaserSubsystem laserSubsystem = new LaserSubsystem();
   //public final static ArmSubsystem armSubsystem = new ArmSubsystem();
   public static LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
@@ -84,6 +87,10 @@ public class RobotContainer {
       new SimpleShootShooter(simpleShooterSubsystem)
     );*/
 
+    servoSubsystem.setDefaultCommand(
+      new MoveServo(servoSubsystem)
+    );
+
     shooterSubsystem.setDefaultCommand(
       new ShootShooter(shooterSubsystem)
     );
@@ -98,10 +105,11 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
+    /*
     new JoystickButton(manipulatorController, Button.kY.value).whenPressed(
       new AutoMove(driveSubsystem, -4)
     );
-
+    */
   }
 
   public Command getAutonomousCommand() {
