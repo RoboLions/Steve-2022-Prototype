@@ -195,9 +195,9 @@ public class ShooterSubsystem extends SubsystemBase {
       shoot_speed_cmd = -1.0;
     }
     
-    leftShooterMotor.set(-0.37);
-    rightShooterMotor.set(0.37);
-    hoodShooterMotor.set(1);
+    leftShooterMotor.set(-0.28);
+    rightShooterMotor.set(0.28);
+    hoodShooterMotor.set(0.9);
   }
 
   /*public void setRPM(double RPM) {
