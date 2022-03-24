@@ -17,7 +17,7 @@ public class ClimbSubsystem extends SubsystemBase {
   private static WPI_TalonFX rightClimbMotor = RobotMap.rightClimbMotor;
   private static WPI_TalonFX leftClimbMotor = RobotMap.leftClimbMotor;
   private static WPI_TalonFX highRightClimbMotor = RobotMap.highRightClimbMotor;
-  private static WPI_TalonFX highLeftClimbMotor = RobotMap.highLeftClimbMotor;
+ // private static WPI_TalonFX highLeftClimbMotor = RobotMap.highLeftClimbMotor;
   public double climb_enc_readout = 0;
   
   //public RoboLionsPID climbPID = new RoboLionsPID();
@@ -26,7 +26,7 @@ public class ClimbSubsystem extends SubsystemBase {
 
     rightClimbMotor.setNeutralMode(NeutralMode.Brake);
     leftClimbMotor.setNeutralMode(NeutralMode.Brake);
-    highLeftClimbMotor.setNeutralMode((NeutralMode.Brake));
+   // highLeftClimbMotor.setNeutralMode((NeutralMode.Brake));
     highRightClimbMotor.setNeutralMode((NeutralMode.Brake));
     rightClimbMotor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, 0, 10);
     leftClimbMotor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, 0, 10);
@@ -80,7 +80,7 @@ public class ClimbSubsystem extends SubsystemBase {
 
   public void setHighClimbPower(double power) {
     highRightClimbMotor.set(power);
-    highLeftClimbMotor.set(power);
+ //   highLeftClimbMotor.set(power);
   }
 
   public void stopClimb() {

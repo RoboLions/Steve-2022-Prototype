@@ -23,6 +23,7 @@ public class ShooterSubsystem extends SubsystemBase {
   private static WPI_VictorSPX backElevatorMotor = RobotMap.backElevatorMotor;
   private static WPI_TalonFX leftShooterMotor = RobotMap.leftShooterMotor;
   private static WPI_TalonFX rightShooterMotor = RobotMap.rightShooterMotor;
+  private static WPI_TalonFX hoodShooterMotor = RobotMap.hoodShooterMotor;
 
   public static final double RIGHT_LOW_HUB_SHOOTER_POWER = 0.24;
   public static final double LEFT_LOW_HUB_SHOOTER_POWER = -0.24;
@@ -64,6 +65,7 @@ public class ShooterSubsystem extends SubsystemBase {
   public ShooterSubsystem() {
     leftShooterMotor.setNeutralMode(NeutralMode.Coast);
     rightShooterMotor.setNeutralMode(NeutralMode.Coast);
+    hoodShooterMotor.setNeutralMode(NeutralMode.Coast);
 
     backElevatorMotor.setNeutralMode(NeutralMode.Coast);
     frontElevatorMotor.setNeutralMode(NeutralMode.Coast);
@@ -73,12 +75,15 @@ public class ShooterSubsystem extends SubsystemBase {
 
     leftShooterMotor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, 0, 10);
     rightShooterMotor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, 0, 10);
-  
+    hoodShooterMotor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, 0, 10);
+
     leftShooterMotor.configNominalOutputForward(0, 10);
     rightShooterMotor.configNominalOutputReverse(0, 10);
+    hoodShooterMotor.configNominalOutputReverse(0, 10);
 
     leftShooterMotor.configNeutralDeadband(0.001, 10);
     rightShooterMotor.configNeutralDeadband(0.001, 10);
+    hoodShooterMotor.configNeutralDeadband(0.001, 10);
 
     rightShooterMotor.configNominalOutputForward(0, 10);
     rightShooterMotor.configNominalOutputReverse(0, 10);
@@ -91,8 +96,14 @@ public class ShooterSubsystem extends SubsystemBase {
     leftShooterMotor.configPeakOutputReverse(-1, 10);
     leftShooterMotor.configNeutralDeadband(0.001, 10);
 
+    hoodShooterMotor.configNominalOutputForward(0, 10);
+    hoodShooterMotor.configNominalOutputReverse(0, 10);
+    hoodShooterMotor.configPeakOutputForward(1, 10);
+    hoodShooterMotor.configPeakOutputReverse(-1, 10);
+
     leftShooterMotor.configAllowableClosedloopError(0, 0, 10);
     rightShooterMotor.configAllowableClosedloopError(0, 0, 10);
+    hoodShooterMotor.configAllowableClosedloopError(0, 0, 10);
 
     shooterPID.initialize2(
       3.15, // Proportional Gain 0.31 s at 7, 3.15
@@ -114,6 +125,7 @@ public class ShooterSubsystem extends SubsystemBase {
   public void setSpeed(double x){
     leftShooterMotor.set(-x);
     rightShooterMotor.set(x);
+    hoodShooterMotor.set(-x);
   }
 
   public void steadyShoot(double velocity) {
@@ -183,8 +195,9 @@ public class ShooterSubsystem extends SubsystemBase {
       shoot_speed_cmd = -1.0;
     }
     
-    leftShooterMotor.set(-shoot_speed_cmd);
-    rightShooterMotor.set(shoot_speed_cmd);
+    leftShooterMotor.set(-0.37);
+    rightShooterMotor.set(0.37);
+    hoodShooterMotor.set(1);
   }
 
   /*public void setRPM(double RPM) {
@@ -206,6 +219,7 @@ public class ShooterSubsystem extends SubsystemBase {
   public void stopShooter() {
     leftShooterMotor.set(0);
     rightShooterMotor.set(0);
+    hoodShooterMotor.set(0);
   }
 
   public double getLeftEncoderVelocity() {
